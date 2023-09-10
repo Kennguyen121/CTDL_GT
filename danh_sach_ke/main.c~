@@ -1,0 +1,85 @@
+#include <stdio.h>
+
+#define MAX 50
+
+struct LIST {
+	int num; //So nut hien co trong danh sach
+	int nodes[MAX];//Moi nut cua danh sach la mot phan tu tren array
+}
+
+//Khoi dong danh sach ke
+void Initialize(LIST *list) {
+	list->num=0;
+}
+
+//Xac dinh so nut trong danh sac
+int ListSize(LIST *list) {
+	return list->num;
+}
+
+//Kiem tra danh sach co empty khong
+int Empty(LIST *list) {
+	return (list->num == 0 ? 1 : 0);
+}
+
+//Kiem tra danh sach co full khong
+int Full(LIST *list) {
+	return (list->num == MAX ? 1 : 0);
+}
+
+//Add mot nut vao danh sach
+void Insert(LIST *list, int pos, int x) {
+	int i;
+	if(pos < 0 || pos > list->num) 
+		printf("Vi tri %d khong hop le!\n", pos);
+	else if(Full(list))
+		printf("Danh sach bi day!\n");
+	else {
+		//Doi cac nut tu vi tri num-1 den vi tri pos xuong 1 vi tri
+		for(i = list->num-1; i>=pos;i--) 
+			list->nodes[i+1] = list->nodes[i];
+		list->nodes[pos] = x;//Them x vao vi tri cua pos
+		list->num++; //Tang so luong nut len 1
+	}
+}
+
+//Delete mot nut ra khoi danh sach
+int Remove(LIST *list, int pos) {
+	int i;
+	if(pos < 0 || pos > list->num) {
+		printf("Vi tri %d khong hop le!\n", pos);
+		return -1;
+	}
+	else if(Empty(list)) {
+		printf("Danh sach bi rong!\n");
+		return -2;
+	}
+	else {
+		x = list->nodes[pos];
+		//Doi cac nut tu vi tri pos+1 den vi tri num-1 len 1 vi tri
+		for(i = pos; i < list->num-1; i++)
+			list->nodes[i] = list->nodes[i+1];
+		list->num--;//Giam so nut di 1 nut
+		return x;
+	}
+}
+
+void Replace(LIST *list,int pos, int x) {
+	if(Empty(list))
+		printf("Danh sach bi rong!\n");
+	else if(pos < 0 || pos > list->num) {
+		printf("Vi tri %d khong hop le!\n", pos);
+	else 
+		list->nodes[pos] = x;
+}
+
+void Sort(LIST *list) {
+	
+}
+
+int main(int argc, char *argv[])
+{
+	printf("Hello C-Free!\n");
+	return 0;
+}
+
