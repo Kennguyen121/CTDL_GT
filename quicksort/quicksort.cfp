@@ -10,6 +10,7 @@
 </Folder>
 <Folder name="Other Files">
 </Folder>
+<Attribute topline="7" x="14" y="25">main.c</Attribute>
 <FolderState>111</FolderState>
 <DefConfig>mingw5</DefConfig>
 <Builder name="mingw" type="MinGW" version="1.0">
